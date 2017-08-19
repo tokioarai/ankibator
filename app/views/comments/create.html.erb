@@ -1,0 +1,40 @@
+<div class="contents row">
+<br>
+<a4>投稿完了</a4>
+
+<p><a3><%= @anki.name%></a3><br>
+・コード：<%= @anki.code%><br>
+・業界　：<%= @anki.industry%> <br>
+・売上高：<%= @anki.sales%>（億円）<br>
+・営利率：<%= @anki.profit%>（％）</p>
+
+<p><a3>参考：外部リンク</a3><br>
+・<%= link_to '企業HPへ', @anki.foundation, :target=>["_blank"] %><br>
+・<%= link_to 'Yahooファイナンスへ',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %></p>
+</div>
+    <div class="contents row">
+      <a3>コメント一覧</a3>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <hr>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+            （<%= comment.created_at %>）
+
+                    <% if user_signed_in? && current_user.id == comment.user_id %>
+            <%= link_to '[削除]', "/comments/#{comment.id}", method: :delete %>
+                      </p>
+          <% end %>
+        <% end %>
+      <% end %>
+      <hr>
+    </div>
+  </div>
+
+<div class="contents row">
+<% number = rand(1..3644)%>
+<center>
+<%=link_to 'TOPに戻る', "/anki", method: :get %>／
+<%=link_to '次の企業', "/anki/#{number}", method: :get %></center>
+</div>

@@ -1,0 +1,63 @@
+<div class ="contents row">
+
+<% if (params[:page1][:get1]).to_i == @anki.answer1 && (params[:page1][:get2]).to_i == @anki.answer2 %>
+
+<p><a4>正解</a4></p>
+
+<% else%>
+
+<p><a4>不正解</a4></p>
+
+<% end %>
+
+<p><a3><%= @anki.name%></a3><br>
+・コード：<%= @anki.code%><br>
+・業界　：<%= @anki.industry%> <br>
+・売上高：<%= @anki.sales%>（億円）<br>
+・営利率：<%= @anki.profit%>（％）</p>
+
+<p><a3>参考：外部リンク</a3><br>
+・<%= link_to '企業HPへ', @anki.foundation, :target=>["_blank"] %><br>
+・<%= link_to 'Yahooファイナンスへ',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %></p>
+
+    <div class="comments">
+      <a3>コメント一覧</a3>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+          <hr>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+                    <% if user_signed_in? && current_user.id == comment.user_id %>
+            <%= link_to '[削除]', "/comments/#{comment.id}", method: :delete %>
+          <% end %>
+          </p>
+
+        <% end %>
+      <% end %>
+      <hr>
+    </div>
+  </div>
+
+  <div class="contents row">
+    <% if current_user %>
+      <%= form_tag("/anki/#{@anki.id}/comments", method: :post) do %>
+        <%= current_user.nickname %>：
+        <textarea cols="30" name="text" placeholder="この企業について知っていること／学んだことをコメント" rows="2"></textarea>
+        <center><input id="submit_button" type="submit" value="コメント送信"></center>
+
+        <%= hidden_field :anki, :id %>
+        <%= hidden_field :page1, :get1 %>
+        <%= hidden_field :page1, :get2 %>
+
+      <% end %>
+    <% end %>
+</div>
+
+<div class ="contents row">
+
+<% number = rand(1..3644)%>
+<center>
+<%=link_to 'TOPに戻る', "/anki", method: :get %>／
+<%=link_to '次の企業', "/anki/#{number}", method: :get %></center>
+</div>

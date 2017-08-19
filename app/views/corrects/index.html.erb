@@ -1,0 +1,10 @@
+<div class="contents row">
+
+  <br><a3>ランキング（コメント数）</a3><br>
+
+  <% @ranking.each.with_index(1) do |user, i| %>
+    <%= user.nickname %>：
+    <%=Comment.group(:user_id).count%>
+  <% end %>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="contents row">
+  <body>
+    <br>
+    <% number = rand(1..3644)%>
+    <img src="assets/shikiho.jpg">
+    <br>
+    <p><%=link_to '＞暗記する', "/anki/#{number}", method: :get %></p>
+    <p><%=link_to '＞ランキング', "/corrects", method: :get %></p>
+    <p><%=link_to '＞コメント一覧', "/comments", method: :get %></p>
+  </body>
+</div>

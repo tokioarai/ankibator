@@ -1,0 +1,22 @@
+<div class="contents row">
+<%= form_tag('/anki/check', method: :post) do %>
+<br>
+<a3><%= @anki.name%></a3>
+
+    <p>売上高：<%= select :page1, :get1, [["5,000億円〜", "1"], ["1,000億円〜4,999億円", "2"], ["100〜1,000億円", "3"], ["〜100億円", "4"]] %></p>
+    <p>営利率：<%= select :page1, :get2, [["20%〜", "1"], ["10〜19%", "2"], ["0〜10%", "3"], ["〜0%", "4"]] %></p>
+    <p><font color="#C0C0C0">※ 売上高、営利率は直近の通期決算の数値</font></p>
+
+<%= hidden_field :anki, :id %>
+
+
+    <input type="submit" value="回答する">
+
+
+<% number = rand(1..3644)%>
+<center>
+<%=link_to 'TOPに戻る', "/anki", method: :get %>／
+<%=link_to '次の企業', "/anki/#{number}", method: :get %></center>
+
+<% end %>
+</div>

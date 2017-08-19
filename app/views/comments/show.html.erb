@@ -1,0 +1,52 @@
+<div class ="contents row">
+
+<% if (params[:page1][:get1]).to_i == @anki.answer1 && (params[:page1][:get2]).to_i == @anki.answer2 %>
+
+<p>正解</p>
+
+<% else%>
+
+<p>不正解</p>
+
+<% end %>
+
+<p><a3><%= @anki.name%></a3><br>
+・コード：<%= @anki.code%><br>
+・業界　：<%= @anki.industry%> <br>
+・売上高：<%= @anki.sales%>（億円）<br>
+・営利率：<%= @anki.profit%>（％）</p>
+
+<p>＞<%= link_to '企業HP', @anki.foundation, :target=>["_blank"] %><br>
+＞<%= link_to 'Yahooファイナンス',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %></p>
+
+
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container">
+    <% if current_user %>
+      <%= form_tag("/anki/#{@anki.id}/comments", method: :post) do %>
+        <textarea cols="30" name="text" placeholder="コメントする" rows="2"></textarea>
+        <input type="submit" value="SENT">
+
+        <%= hidden_field :anki, :id %>
+        <%= hidden_field :page1, :get1 %>
+        <%= hidden_field :page1, :get2 %>
+
+      <% end %>
+
+<% number = rand(1..3644)%>
+<p>
+<%=link_to 'TOPに戻る', "/anki", method: :get %>／
+<%=link_to '次の企業', "/anki/#{number}", method: :get %></p>
+</div>
