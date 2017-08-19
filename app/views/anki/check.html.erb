@@ -16,9 +16,11 @@
 ・売上高：<%= @anki.sales%>（億円）<br>
 ・営利率：<%= @anki.profit%>（％）</p>
 
-<p><a3>参考：外部リンク</a3><br>
-・<%= link_to '企業HPへ', @anki.foundation, :target=>["_blank"] %><br>
-・<%= link_to 'Yahooファイナンスへ',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %></p>
+<p><a3>勉強する</a3><br>
+＞<%= link_to '企業HPへ', @anki.foundation, :target=>["_blank"] %><br>
+＞<a href="https://www.google.co.jp/search?q=<%= @anki.name%>" target="_blank">Google検索へ</a><br>
+＞<a href="https://shikiho.jp/tk/stock/info/<%= @anki.code%>" target="_blank">会社四季報ONLINEへ</a><br>
+＞<%= link_to 'Yahooファイナンスへ',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %></p>
 
     <div class="comments">
       <a3>コメント一覧</a3>
@@ -26,9 +28,10 @@
         <% @comments.each do |comment| %>
           <p>
           <hr>
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-            <%= comment.text %>
-                    <% if user_signed_in? && current_user.id == comment.user_id %>
+            <%= comment.text %><br>
+            by：<a href="/users/<%= comment.user_id %>"><%= comment.user.nickname %> </a>
+           （<%= comment.created_at %>）
+            <% if user_signed_in? && current_user.id == comment.user_id %>
             <%= link_to '[削除]', "/comments/#{comment.id}", method: :delete %>
           <% end %>
           </p>
@@ -43,7 +46,7 @@
     <% if current_user %>
       <%= form_tag("/anki/#{@anki.id}/comments", method: :post) do %>
         <%= current_user.nickname %>：
-        <textarea cols="30" name="text" placeholder="この企業について知っていること／学んだことをコメント" rows="2"></textarea>
+        <textarea cols="30" name="text" placeholder="この企業について知っていること／学んだことを書く" rows="2"></textarea>
         <center><input id="submit_button" type="submit" value="コメント送信"></center>
 
         <%= hidden_field :anki, :id %>

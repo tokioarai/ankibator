@@ -11,6 +11,7 @@ class AnkiController < ApplicationController
 
   def check
     @anki = Company.find(params[:anki][:id])
+    @comments = @anki.comments.includes(:user)
   end
 
 end

@@ -2,15 +2,13 @@
     <p><a3>コメント一覧</a3></p>
     <% @comments.each do |comment| %>
         <hr>
-        <a3><%= comment.company.name %>(<%= comment.company.code %>)</a3>：<br>
+        <a href="/anki/<%= comment.company_id %>"><%= comment.company.name %>(<%= comment.company.code %>)</a>：<br>
         <%= comment.text %><br>
-         by：<%= comment.user.nickname %> （<%= comment.created_at %>）
-          <% if user_signed_in? && current_user.id == comment.user_id %>
-            <%= link_to '[削除]', "/comments/#{comment.id}", method: :delete %>
+         by：<a href="/users/<%= comment.user_id %>"><%= comment.user.nickname %></a>
+        （<%= comment.created_at %>）
+        <% if user_signed_in? && current_user.id == comment.user_id %>
+        <%= link_to '[削除]', "/comments/#{comment.id}", method: :delete %>
           <% end %>
-
-
-
     <% end %>
     <hr>
     <%= paginate(@comments) %>

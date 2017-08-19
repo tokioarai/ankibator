@@ -1,14 +1,7 @@
 @import "compass";
 
-/*
- * "ほのか明朝" licensed under the IPA Font License Agreement v1.0
- * http://fontfree.me/966（配布元のURL）
- * http://ipafont.ipa.go.jp/（IPAフォントのURL）
- * http://ipafont.ipa.go.jp/ipa_font_license_v1.html（IPAフォントライセンスv1.0のURL）
- */
 @font-face {
-    font-family: 'ほのか明朝';
-    src: url('font_1_honokamin.ttf') format('truetype');
+    font-family: Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
     font-weight: normal;
     font-style: normal;
 }
@@ -19,6 +12,7 @@ $accent: #00008b;
 $black: #292929;
 $dark: #ffffff;
 $darkGray: #1a1a1a;
+$blue: #0000cd;
 $gray: #D8D8D8;
 $lightGray: #ffffff;
 $white: white;
@@ -52,7 +46,7 @@ line-height: 1.57;
   letter-spacing: 0.15em;
   font-size: 16px;
   color: $darkGray;
-  font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+  font-family: Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
   margin: 0;
 }
 
@@ -91,13 +85,25 @@ a4 {
   color: $red;
   @extend .transition;
 }
+a4 {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.2em;
+  color: #ffffff;
+}
+a6 {
+  text-decoration: none;
+  font-size: 0.8em;
+  color: $darkGray;
+  @extend .transition;
+}
 
 .bold {
   font-weight: bold;
 }
 
 .serif {
-  font-family: 'ほのか明朝',serif;
+  font-family: "メイリオ",serif;
 }
 
 .ultra {
@@ -233,17 +239,11 @@ header.header {
 .form {
   background: url(https://dl.dropboxusercontent.com/u/5840617/DeathtoStock_Wired3.jpg);
   background-size: cover;
+
   .contents {
-    position: absolute;
     left: 0;
     top: 30%;
     bottom: 0;
-    right: 0;
-  }
-  footer {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
     right: 0;
   }
 }
@@ -258,7 +258,7 @@ div.contents.row {
     }
   }
   .new_user{
-  font-family: "游ゴシック", "YuGothic";
+  font-family: "メイリオ";
   }
   div.content_post {
     @include boxBase(20px 0 ,30px);
@@ -376,7 +376,7 @@ form {
     @include boxBase(5px 0 15px,10px);
     border: 1px solid $gray;
     border-radius: 5px;
-    font-family: "游ゴシック", "YuGothic";
+    font-family: "メイリオ";
   }
   input[type="submit"] {
     @extend .transition;
@@ -413,11 +413,10 @@ input#submit_button {
     background-color: #bbbbbb;
 
 }
-
-footer {
-  @include boxBase;
-  color: $gray;
-  p {
-    text-align: center;
-  }
+table {
+  border-collapse: collapse;
+}
+td {
+  border: solid 1px;
+  padding: 0.5em;
 }

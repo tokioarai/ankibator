@@ -1,10 +1,29 @@
 <div class="contents row">
 
-  <br><a3>ランキング（コメント数）</a3><br>
+  <br>
+  <table>
+  <captation><a3>ランキング（コメント数）</a3></captation>
+  <br><br>
+  <tr>
+    <td>順位</td>
+    <td>ユーザー名</td>
+    <td>コメント数</td>
+  </tr>
+  <% sum = 0 %>
+  <% number = 1 %>
 
   <% @ranking.each.with_index(1) do |user, i| %>
-    <%= user.nickname %>：
-    <%=Comment.group(:user_id).count%>
+    <% sum = number%>
+    <tr>
+      <td><%= sum%></td>
+      <td><a href="/users/<%= user.id %>"><%= user.nickname%></a></td>
+      <td><%= User.find(user.id).comments.count%></td>
+    </tr>
+    <%number +=1%>
   <% end %>
+  </table>
 
+<center><p>
+<%=link_to 'TOPに戻る', "/anki", method: :get %>
+</p></center>
 </div>
