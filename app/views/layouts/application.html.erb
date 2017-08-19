@@ -15,7 +15,7 @@
           <span><a2><%= current_user.nickname %></a2>
           <ul class="user__info">
           <li>
-          <a href="/users/<%= current_user.id %>">マイページ</a>
+          <a href="/users/<%= current_user.id %>">学習記録</a>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </li>
           </ul>
