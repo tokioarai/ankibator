@@ -14,9 +14,7 @@
 ＞<a href="https://shikiho.jp/tk/stock/info/<%= @anki.code%>" target="_blank">会社四季報ONLINEへ</a><br>
 ＞<%= link_to 'Yahooファイナンスへ',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %></p>
 
-
-</div>
-    <div class="contents row">
+    <div class="com_view">
       <a3>コメント一覧</a3>
       <% if @comments %>
         <% @comments.each do |comment| %>

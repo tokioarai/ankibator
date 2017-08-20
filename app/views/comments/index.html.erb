@@ -1,9 +1,11 @@
   <div class="contents row" >
     <p><a3>コメント一覧</a3></p>
+    <div class="com_view" >
     <% @comments.each do |comment| %>
         <hr>
-        <a href="/anki/<%= comment.company_id %>"><%= comment.company.name %>(<%= comment.company.code %>)</a>：<br>
-        <%= comment.text %><br>
+        <a href="/anki/<%= comment.company_id %>"><%= comment.company.name %>(<%= comment.company.code %>)</a><br>
+        <l><%= comment.text %></l><br>
+        （売上<%= comment.company.sales %>億、営利<%= comment.company.profit %>％）<br>
          by：<a href="/users/<%= comment.user_id %>"><%= comment.user.nickname %></a>
         （<%= comment.created_at %>）
         <% if user_signed_in? && current_user.id == comment.user_id %>
@@ -13,7 +15,5 @@
     <hr>
     <%= paginate(@comments) %>
   </div>
-  <center>
-<%=link_to 'TOPに戻る', "/anki", method: :get %>
-</center>
+  <center><%=link_to 'TOPに戻る', "/anki", method: :get %></center>
 </div>

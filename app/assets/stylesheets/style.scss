@@ -257,6 +257,36 @@ div.contents.row {
       font-size: 1.2em;
     }
   }
+  .com_view{
+  a {
+  text-decoration: none;
+        font-weight: bold;
+
+  color: #000080;
+  @extend .transition;
+  &:hover {
+    border-color: lighten($accent, 15%);
+    color: lighten($accent, 15%);
+  }
+  }
+  l {
+  padding-left:1em
+  }
+  }
+  .top_link
+  {
+  text-align: center;
+  margin: auto;
+  a {
+  text-decoration: none;
+  color: $darkGray;
+  @extend .transition;
+  &:hover {
+    border-color: lighten($accent, 15%);
+    color: lighten($accent, 15%);
+  }
+  }
+}
   .new_user{
   font-family: "メイリオ";
   }
@@ -411,7 +441,7 @@ footer {
   width: 600px;
   margin: auto;
   text-align: center;
-  font-size: 0.7em;
+  font-size: 0.5em;
   padding: 10px ;
   a {
   text-decoration: none;
