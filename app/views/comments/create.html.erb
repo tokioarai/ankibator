@@ -3,16 +3,20 @@
 <a4>投稿完了</a4>
 
 <p><a3><%= @anki.name%></a3><br>
-・コード：<%= @anki.code%><br>
+<a5>企業概要</a5><br>
 ・業界　：<%= @anki.industry%> <br>
 ・売上高：<%= @anki.sales%>（億円）<br>
-・営利率：<%= @anki.profit%>（％）</p>
-
-<p><a3>勉強する</a3><br>
-＞<%= link_to '企業HPへ', @anki.foundation, :target=>["_blank"] %><br>
-＞<a href="https://www.google.co.jp/search?q=<%= @anki.name%>" target="_blank">Google検索へ</a><br>
-＞<a href="https://shikiho.jp/tk/stock/info/<%= @anki.code%>" target="_blank">会社四季報ONLINEへ</a><br>
-＞<%= link_to 'Yahooファイナンスへ',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %></p>
+・営利率：<%= @anki.profit%>（％）<br>
+・CAGR：<%= @anki.kessan%>（％、5年）
+</div>
+<div class ="contents-left">
+<a5>外部リンク</a5><br>
+・<%= link_to '企業HP', @anki.foundation, :target=>["_blank"] %><br>
+・<a href="https://www.google.co.jp/search?q=<%= @anki.name%>" target="_blank">Google検索</a><br>
+・<a href="https://www.stockclip.net/companies/<%= @anki.code%>" target="_blank">Stockclip</a><br>
+・<a href="https://shikiho.jp/tk/stock/info/<%= @anki.code%>" target="_blank">会社四季報ONLINE</a><br>
+・<%= link_to 'Yahooファイナンス',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %>
+</div>
 
     <div class="com_view">
       <a3>コメント一覧</a3>
