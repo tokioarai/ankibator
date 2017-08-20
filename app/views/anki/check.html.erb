@@ -10,25 +10,26 @@
 
 <% end %>
 
-<p><a3><%= @anki.name%></a3><br>
-・コード：<%= @anki.code%><br>
+<p><a3><%= @anki.name%>（<%= @anki.code%>）</a3><br>
+<div class ="contents-left">
+<a5>企業概要</a5><br>
 ・業界　：<%= @anki.industry%> <br>
 ・売上高：<%= @anki.sales%>（億円）<br>
-・営利率：<%= @anki.profit%>（％）</p>
-・CAGR　；あああああああああああああああ
-
-<p><a3>勉強する</a3><br>
-＞<%= link_to '企業HPへ', @anki.foundation, :target=>["_blank"] %><br>
-＞<a href="https://www.google.co.jp/search?q=<%= @anki.name%>" target="_blank">Google検索へ</a><br>
-＞<a href="https://www.stockclip.net/companies/<%= @anki.code%>" target="_blank">Stockclipへ</a><br>
-＞<a href="https://shikiho.jp/tk/stock/info/<%= @anki.code%>" target="_blank">会社四季報ONLINEへ</a><br>
-＞<%= link_to 'Yahooファイナンスへ',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %></p>
-
-    <div class="comments">
+・営利率：<%= @anki.profit%>（％）<br>
+・CAGR：あああ（％、5年）
+</div>
+<div class ="contents-left">
+<a5>外部リンク</a5><br>
+・<%= link_to '企業HP', @anki.foundation, :target=>["_blank"] %><br>
+・<a href="https://www.google.co.jp/search?q=<%= @anki.name%>" target="_blank">Google検索</a><br>
+・<a href="https://www.stockclip.net/companies/<%= @anki.code%>" target="_blank">Stockclip</a><br>
+・<a href="https://shikiho.jp/tk/stock/info/<%= @anki.code%>" target="_blank">会社四季報ONLINE</a><br>
+・<%= link_to 'Yahooファイナンス',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %>
+</div>
+<div class="comments">
       <a3>コメント一覧</a3>
       <% if @comments %>
         <% @comments.each do |comment| %>
-          <p>
           <hr>
             <%= comment.text %><br>
             by：<a href="/users/<%= comment.user_id %>"><%= comment.user.nickname %> </a>
@@ -36,31 +37,20 @@
             <% if user_signed_in? && current_user.id == comment.user_id %>
             <%= link_to '[削除]', "/comments/#{comment.id}", method: :delete %>
           <% end %>
-          </p>
-
         <% end %>
       <% end %>
       <hr>
     </div>
-  </div>
-
-  <div class="contents row">
     <% if current_user %>
       <%= form_tag("/anki/#{@anki.id}/comments", method: :post) do %>
         <%= current_user.nickname %>：
         <textarea cols="30" name="text" placeholder="この企業について知っていること／学んだことを書く" rows="2"></textarea>
         <center><input id="submit_button" type="submit" value="コメント送信"></center>
-
         <%= hidden_field :anki, :id %>
         <%= hidden_field :page1, :get1 %>
         <%= hidden_field :page1, :get2 %>
-
       <% end %>
     <% end %>
-</div>
-
-<div class ="contents row">
-
 <% number = rand(1..3644)%>
 <center>
 <%=link_to 'TOPに戻る', "/anki", method: :get %>／

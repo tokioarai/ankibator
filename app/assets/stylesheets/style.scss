@@ -70,6 +70,7 @@ a2 {
 }
 
 a3 {
+
   text-decoration: none;
   font-weight: bold;
   color: $accent;
@@ -80,11 +81,18 @@ a3 {
 }
 
 a4 {
+
   text-decoration: none;
   font-weight: bold;
   color: $red;
   @extend .transition;
 }
+
+a5 {
+  font-weight: bold;
+  text-decoration: underline;
+  }
+
 a6 {
   text-decoration: none;
   font-size: 0.8em;
@@ -107,6 +115,8 @@ a6 {
 ::selection {
   background: $gray;
 }
+
+select { width: 200px; }
 
 .transition {
   @include transition-property(all);
@@ -167,7 +177,7 @@ header.header {
 }
   div.header__bar.row {
     position: relative;
-    width: 600px;
+    width: 800px;
     h1.grid-6 {
       font-size: 20px;
       width: 170px;
@@ -246,8 +256,8 @@ header.header {
 }
 div.contents.row {
   background-color: #ffffff;
-  padding: 0px 30px 30px 30px;
-  width:600px;
+  padding: 0px 20px 20px 20px;
+  width:800px;
   h2 {
     @include boxBase(20px 0, 0);
     font-weight: normal;
@@ -256,7 +266,17 @@ div.contents.row {
       padding-right: 5px;
       font-size: 1.2em;
     }
+    }
+    }
+  .contents-left{
+  width:50%;
+  float:left
   }
+  .contents-right{
+  width:50%;
+  float:right
+  }
+
   .com_view{
   a {
   text-decoration: none;
@@ -391,7 +411,6 @@ div.contents.row {
       @include baseMargin;
     }
   }
-}
 form {
   h3 {
     @include baseMargin(0 0 20px);

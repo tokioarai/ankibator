@@ -1,17 +1,21 @@
 <div class="contents row">
 <%= form_tag('/anki/check', method: :post) do %>
 <br>
-<a3><%= @anki.name%></a3>
+次の企業の売上高／営利率を選んでください
+<BR>
+<br>
+<a3><%= @anki.name%>（<%= @anki.code%>）</a3>
 
-    <p>売上高：<a6><%= select :page1, :get1, [["5,000億円〜", "1"], ["1,000億円〜4,999億円", "2"], ["100〜999億円", "3"], ["〜99億円", "4"]] %><a6></p>
-    <p>営利率：<a6><%= select :page1, :get2, [["20%〜", "1"], ["10〜19%", "2"], ["0〜9%", "3"], ["0%未満", "4"]] %><a6></p>
-    <p><font color="#C0C0C0">※ 売上高、営利率は直近の通期決算の数値('17/8時点)</font></p>
+    <p>・売上高：<a6><%= select :page1, :get1, [["5,000億円〜", "1"], ["1,000億円〜4,999億円", "2"], ["100〜999億円", "3"], ["〜99億円", "4"]] %><a6></p>
+    <p>・営利率：<a6><%= select :page1, :get2, [["20%〜", "1"], ["10〜19%", "2"], ["0〜9%", "3"], ["0%未満", "4"]] %><a6></p>
+    <p><font color="#C0C0C0" font size="2">※ 売上高、営利率は直近の通期決算の数値('17/7時点)</font></p>
 
 <%= hidden_field :anki, :id %>
 
 
-    <input type="submit" value="回答する">
-
+<center>
+<input id="submit_button" type="submit" value="回答する">
+</center>
 <% number = rand(1..3644)%>
 <center>
 <%=link_to 'TOPに戻る', "/anki", method: :get %>／
