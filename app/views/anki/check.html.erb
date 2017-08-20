@@ -15,10 +15,12 @@
 ・業界　：<%= @anki.industry%> <br>
 ・売上高：<%= @anki.sales%>（億円）<br>
 ・営利率：<%= @anki.profit%>（％）</p>
+・CAGR　；あああああああああああああああ
 
 <p><a3>勉強する</a3><br>
 ＞<%= link_to '企業HPへ', @anki.foundation, :target=>["_blank"] %><br>
 ＞<a href="https://www.google.co.jp/search?q=<%= @anki.name%>" target="_blank">Google検索へ</a><br>
+＞<a href="https://www.stockclip.net/companies/<%= @anki.code%>" target="_blank">Stockclipへ</a><br>
 ＞<a href="https://shikiho.jp/tk/stock/info/<%= @anki.code%>" target="_blank">会社四季報ONLINEへ</a><br>
 ＞<%= link_to 'Yahooファイナンスへ',"https://stocks.finance.yahoo.co.jp/stocks/detail/?code=#{@anki.code}", :target=>["_blank"] %></p>
 
